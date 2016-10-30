@@ -1,0 +1,11 @@
+[package]
+name = "hex_edit"
+version = "0.1.0"
+authors = ["Rick Weber"]
+
+[dependencies]
+pancurses = "0.7.0"
+
+[[bin]]
+name = "hex_edit"
+path = "src/main.rs"
