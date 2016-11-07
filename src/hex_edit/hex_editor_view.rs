@@ -103,13 +103,16 @@ impl HexEditorView {
         let mut offset: u64 = self._row_offset * self.bytes_per_line() as u64;
         let data = self._file.as_slice();
 
-        let row_loc: u64 = if self.max_rows() >= offset {
-            self.max_rows() - offset
+        let bytes_per_line = self.bytes_per_line() as u64;
+        let max_rows = self.max_rows();
+
+        let last_row_in_view: u64 = if max_rows * bytes_per_line >= offset {
+            max_rows - offset / bytes_per_line
         } else {
             0
         };
 
-        let last_row = cmp::min(window_rows as u64, row_loc);
+        let last_row = cmp::min(window_rows as u64, last_row_in_view);
 
         for row in 0..last_row as i32 {
             self._terminal_window.mvprintw(row, 0, &format!("{:#X}", offset));
@@ -148,7 +151,11 @@ impl HexEditorView {
     }
 
     fn line_down (&mut self) {
-        self._row_offset += 1;
+        if self._row_offset + 1 < self.max_rows() {
+            self._row_offset += 1;
+        } else {
+            self._row_offset = self.max_rows() - 1;
+        }
     }
 
     fn line_up (&mut self) {
@@ -166,7 +173,7 @@ impl HexEditorView {
     fn page_down (&mut self) {
         let rows = self._terminal_window.get_max_y() as u64;
 
-        self._row_offset =  self._row_offset + rows;
+        self._row_offset =  if self._row_offset + rows < self.max_rows() { self._row_offset + rows } else { self.max_rows() - 1};
     }
 
     pub fn process_input(&mut self) {

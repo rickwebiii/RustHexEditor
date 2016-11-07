@@ -48,3 +48,10 @@ dependencies = [
  "libc 0.2.16 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
+[metadata]
+"checksum gcc 0.3.35 (registry+https://github.com/rust-lang/crates.io-index)" = "91ecd03771effb0c968fd6950b37e89476a578aaf1c70297d8e92b6516ec3312"
+"checksum libc 0.2.16 (registry+https://github.com/rust-lang/crates.io-index)" = "408014cace30ee0f767b1c4517980646a573ec61a57957aeeabcac8ac0a02e8d"
+"checksum log 0.3.6 (registry+https://github.com/rust-lang/crates.io-index)" = "ab83497bf8bf4ed2a74259c1c802351fcd67a65baa86394b6ba73c36f4838054"
+"checksum ncurses 5.82.0 (registry+https://github.com/rust-lang/crates.io-index)" = "f260f0a421b984915be79b414ecfb1b33a6f966b1dcc180ea38c1c0e9dbed8eb"
+"checksum pancurses 0.7.0 (registry+https://github.com/rust-lang/crates.io-index)" = "8d50e310b2bd745bbafc0138019729791c6c67bff8094d9136e85fd76e696709"
+"checksum pdcurses-sys 0.3.0 (registry+https://github.com/rust-lang/crates.io-index)" = "27a3bc0e02f0e4b38c3225e5ead84f7d529d44048076bb49980f76edcff7d6f1"
